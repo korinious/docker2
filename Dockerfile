@@ -1,11 +1,10 @@
-FROM python:3-alpine3.15
+FROM python:3.8
 
 WORKDIR /docker2
 
-COPY . /docker2
+ADD . /docker2
 
-RUN pip install -r requirements.txt
+RUN pip install --trusted-host pypi.python.org Flask Redis
 
-EXPOSE 3000
-
-CMD python ./docker2.py
+EXPOSE 80
+CMD ["python", "docker2.py"]
